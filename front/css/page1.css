@@ -1,6 +1,12 @@
+.money-maker-container{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap:1%;
+}
 .money-maker-facility{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     z-index: 2;
 }
 
@@ -9,5 +15,10 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
+}
+
+
+table{
+    align-content: center;
 }
 
