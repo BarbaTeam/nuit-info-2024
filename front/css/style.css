@@ -16,6 +16,14 @@ header {
     padding-top: 30px;
 }
 
+footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 30px;
+    justify-content: space-around;
+}
+
 .page-title {
     padding-top: 50px;
 }
@@ -26,7 +34,10 @@ header {
     align-items: center;
 }
 
-
+#logo {
+    width:25px;
+    height:25px;
+}
 
 @media (prefers-color-scheme: light) {
 
