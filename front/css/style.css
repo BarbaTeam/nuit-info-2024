@@ -39,7 +39,27 @@ footer {
     height:50px;
 }
 
+.presentation-entreprise {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
+.presentation-entreprise div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 35vw;
+}
+
+.presentation-entreprise div p {
+    flex-wrap: wrap;
+}
+
+.rules div{
+    position: relative;
+    
+}
 
 @media (prefers-color-scheme: light) {
 
@@ -104,11 +124,11 @@ footer {
         border-radius: 8px 8px 0 0;
     }
 
-    p {
+    /*p {
         margin-top: 40px;
         margin-inline: 6vw;
         text-align: justify;
-    }
+    }*/
 
     h1 {
         margin-top: 45px;
@@ -197,12 +217,12 @@ footer {
         border-radius: 8px 8px 0 0;
     }
 
-    p {
+    /*p {
         margin-top: 40px;
         margin-inline: 6vw;
         text-align: justify;
         color: #bcbbc6;
-    }
+    }*/
 
     h1 {
         margin-top: 45px;
@@ -222,9 +242,4 @@ footer {
         color: white;
         font-size: 15px;
     }
-}
-
-div h4 {
-    margin: 50px;
-    padding: 30px;
 }
