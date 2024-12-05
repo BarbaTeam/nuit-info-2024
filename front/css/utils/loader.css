@@ -1,0 +1,30 @@
+#loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /*background: url('../../img/loader.gif') no-repeat center center;*/
+
+  z-index: 999;
+
+  visibility: hidden;
+}
+
+
+#loader-gif {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: inherit;
+}
+
+
+#loader-msg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 100%);
+  visibility: inherit;
+}
