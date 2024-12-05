@@ -1,5 +1,13 @@
 .money-maker-facility{
     display: flex;
     justify-content: space-evenly;
+    z-index: 2;
+}
+
+body{
+    background-image: url("../rsc/see-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
 }
 
