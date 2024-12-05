@@ -1,21 +1,16 @@
-const express = require('express');
-const axios = require('axios');
+const http = require("http");
 
-const app = express();
-app.use(express.json());
+const api = require("./api");
+const files = require("./files");
 
-app.post('/send-data', async (req, res) => {
-    try {
-        const flaskResponse = await axios.post('http://127.0.0.1:5000/process', req.body);
-        res.json({
-            status: 'success',
-            flaskResponse: flaskResponse.data
-        });
-    } catch (error) {
-        res.status(500).json({ status: 'error', message: error.message });
-    }
-});
 
-app.listen(3000, () => {
-    console.log('Node.js server is running on port 3000');
-});
+http.createServer(async (request, response) => {
+  let parsed_url = request.url.split('/').filter(Boolean);
+
+  if (parsed_url && parsed_url[0] === "api") {
+    /*DEBUG ::*/ console.log(`API Call ::: ${parsed_url[1]}`);
+    await api.manageRequest(request, response);
+  } else {
+    files.manageRequest(request, response);
+  }
+}).listen(8000);
