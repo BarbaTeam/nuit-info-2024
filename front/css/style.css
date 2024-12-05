@@ -21,7 +21,6 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin:75px;
 }
 
 .page-title {
@@ -56,9 +55,10 @@ footer {
     flex-wrap: wrap;
 }
 
-.rules div{
-    position: relative;
-    
+.rules {
+    display: flex;
+    flex-direction: column;
+    padding: 9vw;
 }
 
 @media (prefers-color-scheme: light) {

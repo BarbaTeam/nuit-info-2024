@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <style>
+        .clickable-zone {
+            position: relative; /* Fixe la zone par rapport à la fenêtre */
+            width: 100vw;
+            height: 400px;
+            background-color: rgba(0, 0, 0, 0); /* Zone complètement transparente */
+            cursor: pointer;
+        }
+    </style>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
@@ -15,7 +24,6 @@
     <!--# Scripts #-->
     <script src="../../js/utils/loader.js" defer></script>
     <script src="../../js/utils/modal.js" defer></script>
-    <script src="../../js/utils/buyer.js" defer></script>
 
 </head>
 <body>
@@ -27,10 +35,27 @@
             <span class="nav-indicator"></span>
         </nav>
     </header>
+    <script>
+        function handleClick(event) {
+            // Récupérer la position de la souris
+            const mouseX = event.clientX; // Position horizontale relative à la fenêtre
+            const mouseY = event.clientY; // Position verticale relative à la fenêtre
 
-    <div class="right-container">
+            const zone = event.currentTarget.getBoundingClientRect();
+            const localX = event.clientX - zone.left; // Position X relative à la zone
+            const localY = event.clientY - zone.top;  // Position Y relative à la zone
 
-    </div>
+            // Afficher la position dans une alerte
+            alert(`Position de la souris (fenêtre) : X=${mouseX}, Y=${mouseY}\nPosition relative à la zone : X=${localX}, Y=${localY}`);
+
+            // Afficher dans la console pour les développeurs
+            console.log(`Position (fenêtre) : X=${mouseX}, Y=${mouseY}`);
+            console.log(`Position (zone) : X=${localX}, Y=${localY}`);
+        }
+    </script>
+
+    <div class="playable_zone">
+
     <div class="left-container">
         <div class="datas">
             <div class="money">
@@ -81,5 +106,8 @@
         </table>
 
     </div>
+    <div class="clickable-zone" onclick="handleClick(event)"></div>
+    <div class="right-container"></div>
+</div>
 </body>
 </html>
