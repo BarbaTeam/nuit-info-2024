@@ -151,10 +151,6 @@ footer {
 
 @media (prefers-color-scheme: dark) {
 
-    *{
-        background-color: #272727;
-    }
-
     header nav {
         background-color: rgba(57, 57, 57, 0.7);
         backdrop-filter: blur(4px);
