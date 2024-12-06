@@ -4,10 +4,10 @@ const utils = require("./utils");
 
 
 GameStructure = {
-  ZODIAC: {name: "zodiac", price: 0},
-  FISHERMAN: {name: "fisherman", price: 0},
-  CARGO: {name: "cargo", price: 0},
-  OIL_PLATFORM: {name: "oil platform", price: 0},
+  ZODIAC: {name: "zodiac", price: 50},
+  FISHERMAN: {name: "fisherman", price: 200},
+  CARGO: {name: "cargo", price: 1000},
+  OIL_PLATFORM: {name: "oil platform", price: 10000},
 }
 
 function get_GameStructureName() {
