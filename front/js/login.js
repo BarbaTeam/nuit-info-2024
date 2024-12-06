@@ -95,7 +95,7 @@ async function login() {
     }
 
     localStorage.setItem("game_token", await resp.text());
-    window.location.href = "./game.html";
+    window.location.href = "./index.html";
 
   } catch (error) {
     stopLoader();
