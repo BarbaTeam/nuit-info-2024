@@ -44,7 +44,7 @@ async function signin() {
   }
 
   try {
-    await fetch("http://localhost:8000/api/signin", {
+    await fetch("http://loirat.alwaysdata.net/api/signin", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(user_inputs)
@@ -78,7 +78,7 @@ async function login() {
   }
 
   try {
-    let resp = await fetch("http://localhost:8000/api/login", {
+    let resp = await fetch("http://loirat.alwaysdata.net/api/login", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(user_inputs)
