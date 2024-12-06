@@ -6,7 +6,7 @@ html, body {
 }
 
 .left-container {
-    margin-top:5vh;
+    margin-top:7vh;
     grid-row:2;
     grid-column:1;
     grid-template-rows: 5% 5% 40% 50%;
@@ -14,7 +14,7 @@ html, body {
     gap: 1rem;
 }
 .right-container {
-    margin-top:5vh;
+    margin-top:7vh;
     grid-row:2;
     grid-column:3;
     grid-template-rows: 5% 5% 40% 50%;
@@ -22,7 +22,7 @@ html, body {
     gap: 1rem;
 }
 .money, .pollution, .human, .money-maker-container {
-    background-color: #bbffff;
+    background-color: rgb(255,255,255,0.8);
     width: auto;
     border-radius: 8px;
     padding: 0.5rem;
@@ -30,7 +30,7 @@ html, body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .alert-screen, .event-counter-container {
-    background-color: #bbffff;
+    background-color: rgb(255,255,255,0.8);
     width: auto;
     border-radius: 8px;
     padding: 0.5rem;
@@ -60,7 +60,7 @@ html, body {
 }
 
 .img_humain{
-    height: 27vh;
+    height: 26vh;
 }
 
 .money-maker-container {
@@ -111,7 +111,6 @@ html, body {
     grid-row: 2;
     height: auto;
     width: 65%;
-
 }
 .playable_zone{
     grid-column: 1/4;
