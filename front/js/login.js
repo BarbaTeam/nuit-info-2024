@@ -94,7 +94,7 @@ async function login() {
       return;
     }
 
-    localStorage.setItem("game_token", await resp.text());
+    localStorage.setItem("_game_token", await resp.text());
     window.location.href = "./index.html";
 
   } catch (error) {

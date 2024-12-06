@@ -188,16 +188,16 @@ exports.manageRequest = async (request, response) => {
 
 exports.update_all_games = () => {
   for (game of GAMES) {
-    if (inventory[ZODIAC.name] > 0) {
-      game.player_money +=
+    if (inventory[GameStructure.ZODIAC.name] > 0) {
+      game.player_money += GameStructure.ZODIAC.money_modifier * inventory[GameStructure.ZODIAC.name];
     }
 
-    if (inventory[CARGO.name] > 0) {
-      game.player_money +=
+    if (inventory[GameStructure.CARGO.name] > 0) {
+      game.player_money += GameStructure.CARGO.money_modifier * inventory[GameStructure.CARGO.name];
     }
 
-    if (inventory[FISHERMAN.name] > 0) {
-      game.player_money +=
+    if (inventory[GameStructure.FISHERMAN.name] > 0) {
+      game.player_money += GameStructure.FISHERMAN.money_modifier * inventory[GameStructure.FISHERMAN.name];
     }
   }
 }

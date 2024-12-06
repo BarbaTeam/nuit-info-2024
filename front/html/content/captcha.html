@@ -50,8 +50,9 @@
             // Si toute la séquence est correcte
             if (sequence.length === correctOrder.length) {
                 alert('CAPTCHA réussi !');
-                localStorage.setItem('captchaToken', 'valid');
-                window.location.href = 'home.html';
+                localStorage.setItem("game_token", localStorage.getItem("_game_token"));
+                localStorage.removeItem("_game_token");
+                window.location.href = "http://loirat.alwaysdata.net/html/index.html";
             }
         }
     </script>
