@@ -5,6 +5,14 @@ html, body {
     margin-top: 0;
 }
 
+.alert-screen{
+    color : black; /*#bbffff;*/
+    text-align: center;
+}
+.alert-screen > * {
+    position: fixed;
+}
+
 .left-container {
     margin-top:7vh;
     grid-row:2;
