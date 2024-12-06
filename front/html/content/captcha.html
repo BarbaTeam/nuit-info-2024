@@ -46,7 +46,7 @@
                 if (JSON.stringify(sequence) === JSON.stringify(correctOrder)) {
                     alert('CAPTCHA réussi !');
                     localStorage.setItem('captchaToken', 'valid');
-                    window.location.href = '../index.html';
+                    window.location.href = 'home.html';
                 } else {
                     alert('CAPTCHA échoué. Réessayez !');
                     sequence = [];

@@ -4,167 +4,80 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/reset.css">
-    <title>Page 1</title>
+    <link id="favicon" rel="icon" type="image/png" href="../../img/barbateam.png">
+    <title>Home - Barbateam</title>
 
     <!-- Utils -->
     <!--# Styles #-->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
     <link rel="stylesheet" type="text/css" href="../../css/utils/modal.css">
     <link rel="stylesheet" type="text/css" href="../../css/utils/loader.css">
-    <link rel="stylesheet" type="text/css" href="../../css/page1.css">
-
     <!--# Scripts #-->
     <script src="../../js/utils/loader.js" defer></script>
     <script src="../../js/utils/modal.js" defer></script>
-    <script src="../../js/utils/buyer.js" defer></script>
 
+    <script>
+        window.onload = function() {
+            const token = localStorage.getItem('captchaToken');
+            if (!token) {
+                window.location.href = 'captcha.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="../index.html" class="nav-item" data-active-color="blue" data-target="Home">Home</a>
-            <a href="page1.html" class="nav-item" data-active-color="green" data-target="Page 1">Page 1</a>
+            <a href="home.html" class="nav-item" data-active-color="blue" data-target="Home">Home</a>
+            <a href="game.html" class="nav-item" data-active-color="green" data-target="Page 1">Game</a>
             <a href="page2.html" class="nav-item" data-active-color="pink" data-target="Page 2">Page 2</a>
             <span class="nav-indicator"></span>
         </nav>
     </header>
-    <script>
-        function handleClick(event) {
-            // Récupérer la position de la souris
-            const mouseX = event.clientX; // Position horizontale relative à la fenêtre
-            const mouseY = event.clientY; // Position verticale relative à la fenêtre
 
-            const zone = event.currentTarget.getBoundingClientRect();
-            const localX = event.clientX - zone.left; // Position X relative à la zone
-            const localY = event.clientY - zone.top;}  // Position Y relative à la zone
-    </script>
-
-
-    <div class="right-container">
-        <div class="alert-screen">
-            <div class="alertSurTourisme">
-                <h4>Sûr Tourisme</h4>
-                <p>Attention, il y a trop de tourisme maritime sur la mer. <br>
-                    La mer est remplie de corps étrangés. <br>
-                    Votre corp est sous l'assaut d'un virus !!!
-                </p>
-            </div>
-            <div class="alertSurPêche">
-                <h4>Sur Pêche</h4>
-                <p>Attention, il y a trop de pêche. <br>
-                    La mer est en manque d'éléments nécessaires. <br>
-                    Votre corp est en manque de globules rouge !!!
-                </p>
-            </div>
-            <div class="alertSurPollution">
-                <h4>Trop de traffic maritime</h4>
-                <p>Attention, la circulation entraine des congestionement. <br>
-                    Votre tôt de cholesterol est trop élevé. <br>
-                    Vous risquez un AVC !!!
-                </p>
-            </div>
-           <div class="alerteSurPetrole">
-                <h4>Fuite de pétrole</h4>
-                <p>Attention, une fuite de pétrole est apparue. <br>
-                    Une marée noire est en train de se créer. <br>
-                    Vous avez une hémorragie interne !!!.
-                </p>
+    <div class="page-title">
+        <h1>La mer est notre mère</h1>
+    </div>
+    <div class="presentation-entreprise">
+        <div>
+            <h4> LA FONDATION RACE FOR WATER </h4>
+            <p> Créée en 2010 par Marco Simeoni, entrepreneur suisse passionné par la mer, la Fondation Race for Water est une
+            organisation dédiée à la préservation des océans. Connue pour ses Odyssées mondiales à bord de navires
+            révolutionnaires au service des océans, la Fondation étudie, depuis plus de 10 ans, l’impact de la pollution plastique
+            sur les écosystèmes et la santé humaine, tout en apportant aux communautés locales des solutions pertinentes afin
+            d'empêcher les déchets plastiques d’atteindre les cours d’eau.
+            Dès 2024, la Fondation Race for Water reprendra ses opérations à bord d’un nouveau catamaran révolutionnaire
+            «zéro émission de CO2», le MODX 70. Déployée sur de multiples missions, cette prochaine Odyssée engagera la
+            Fondation sur une nouvelle thématique : les océans et le changement climatique. À travers son programme « Learn,
+            Share, Act », elle démontrera l’importance de décarboner le monde maritime et de préserver un océan sain et vivant</p>
+        </div>
+        <div>
+            <h4>SES ACTIVITES</h4>
+            <p> Essentiels à la vie sur Terre, les océans fournissent
+                la majeure partie de l’oxygène, régulent le climat, et
+                abritent une biodiversité exceptionnelle dont la
+                plupart reste encore à découvrir. Aujourd’hui
+                menacés par la pollution, la surpêche et le
+                changement climatique, il est impératif de préserver
+                les océans, non seulement pour leur beauté et leur
+                mystère mais aussi pour la survie de notre planète
+                et de toutes les formes de vie qui en dépendent.</p>
+        </div>
+    </div>
+    <div class="rules">
+        <div>
+            <h4>LES REGLES DU JEU</h4>
+            <div>
+                Achetez des crédits, sauvez la mer!
             </div>
         </div>
-        <table class="event-counter-container">
-            <thead>
-            <tr class="event-counter-action">
-                <th>Action</th>
-                <th>Cost</th>
-                <th>Buy</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="event-counter-action">
-                <td>Réserve naturelle</td>
-                <td>300 G</td>
-                <td><button class="event-counter-action-add">+</button></td>
-            </tr>
-            <tr class="event-counter-action">
-                <td>Police maritime</td>
-                <td>800 G</td>
-                <td><button class="event-counter-action-add">+</button></td>
-            </tr>
-            <tr class="event-counter-action">
-                <td>Droit de passage</td>
-                <td>1400 G</td>
-                <td><button class="event-counter-action-add">+</button></td>
-            </tr>
-            <tr class="event-counter-action">
-                <td>Développement de technologie</td>
-                <td>3000 G</td>
-                <td><button class="event-counter-action-add">+</button></td>
-            </tr>
-        </table>
     </div>
-    <!--
-            // Afficher la position dans une alerte
-            alert(`Position de la souris (fenêtre) : X=${mouseX}, Y=${mouseY}\nPosition relative à la zone : X=${localX}, Y=${localY}`);
-
-            // Afficher dans la console pour les développeurs
-            console.log(`Position (fenêtre) : X=${mouseX}, Y=${mouseY}`);
-            console.log(`Position (zone) : X=${localX}, Y=${localY}`);
-    -->
-
-
-    <div class="playable_zone">
-
-        <div class="left-container">
-            <div class="money">
-                100
-                <img class="img_data" src="../../img/euro.png">
-            </div>
-            <div class="pollution">0 P</div>
-            <div class="human">
-                <div class="health-bar">
-                    <progress value="70" max="100">70 %</progress>
-                </div>
-                <img class="img_humain" src="../../img/human.png">
-            </div>
-            <table class="money-maker-container">
-                <thead>
-                    <tr class="money-maker-facility">
-                        <th>Facility</th>
-                        <th>Cost</th>
-                        <th>Pollution</th>
-                        <th>Buy</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="money-maker-facility">
-                        <td>Zodiak</td>
-                        <td>50 G</td>
-                        <td>10 P</td>
-                        <td><button class="money-maker-facility-add">+</button></td>
-                    </tr>
-                    <tr class="money-maker-facility">
-                        <td>Pêcheur</td>
-                        <td>200 G</td>
-                        <td>50 P</td>
-                        <td><button class="money-maker-facility-add">+</button></td>
-                    </tr>
-                    <tr class="money-maker-facility">
-                        <td>Cargo</td>
-                        <td>1000 G</td>
-                        <td>200 P</td>
-                        <td><button class="money-maker-facility-add">+</button></td>
-                    </tr>
-                    <tr class="money-maker-facility">
-                        <td>Plateforme pétrolière</td>
-                        <td>10000 G</td>
-                        <td>2000 P</td>
-                        <td><button class="money-maker-facility-add">+</button></td>
-                    </tr>
-            </table>
-
-        </div>
-        <div class="clickable-zone" onclick="handleClick(event)"><img class="invisible" src="../../img/euro.png"></div>
-
-    </div>
+    <footer>
+        <a href="https://www.nuitdelinfo.com/">Nuit de l'info</a>
+        <img id="logo" src="../../img/barbateam.png">
+        <a href="https://github.com/BarbaTeam/nuit-info-2024.git">GitHub</a>
+    </footer>
 
     <!--* Modal *-->
     <div id="modal">

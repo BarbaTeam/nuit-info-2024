@@ -9,7 +9,7 @@ exports.manageRequest = (request, response) => {
   let pathname = FRONT_PATH + request.url;
   try {
     if (fs.statSync(pathname).isDirectory()) {
-      pathname += "index.html";
+      pathname += "home.html";
     }
 
     if (fs.statSync(pathname).isFile()) {
