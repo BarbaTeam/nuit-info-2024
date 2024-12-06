@@ -13,6 +13,7 @@ html, body {
     height: 100%;
     gap: 1rem;
 }
+
 .right-container {
     margin-top:7vh;
     grid-row:2;
@@ -21,6 +22,7 @@ html, body {
     height: 100%;
     gap: 1rem;
 }
+
 .money, .pollution, .human, .money-maker-container {
     background-color: rgb(255,255,255,0.8);
     width: auto;
@@ -29,6 +31,7 @@ html, body {
     margin-top: 0.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 .alert-screen, .event-counter-container {
     background-color: rgb(255,255,255,0.8);
     width: auto;

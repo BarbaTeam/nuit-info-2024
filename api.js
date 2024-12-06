@@ -4,10 +4,18 @@ const utils = require("./utils");
 
 
 GameStructure = {
-  ZODIAC: "zodiac",
-  FISHERMAN: "fisherman",
-  CARGO: "cargo",
-  OIL_PLATFORM: "oil platform",
+  ZODIAC: {name: "zodiac", price: 0},
+  FISHERMAN: {name: "fisherman", price: 0},
+  CARGO: {name: "cargo", price: 0},
+  OIL_PLATFORM: {name: "oil platform", price: 0},
+}
+
+function get_GameStructureName() {
+  l = [];
+  for (sruct of GameStructure.values()) {
+    l.push(struct.name);
+  }
+  return l;
 }
 
 
@@ -94,28 +102,48 @@ const GameTasks = {
 
     response.statusCode = 200;
     response.setHeader("Content-Type", utils.getMIMETypes(".json"));
-
-    // Something
     response.end(game.parseToJSON());
   },
 
   continueGame: (response, user_token) => {
-    //...
+    if (!GAMES[user_token]) {
+      GAMES[user_token] = new Game();
+    }
+
+    const game = GAMES[user_token];
+
+    response.statusCode = 200;
+    response.setHeader("Content-Type", utils.getMIMETypes(".json"));
+    response.end(game.parseToJSON());
   },
 
 
-  // TODO : Game Actions :
-  /*
-  ... : (response, user_token, params) => {
+  buyStruct : (response, user_token, params) => {
     response.statusCode = 200;
 
     const game = Games[user_token];
 
-    const letter = params[0]["letter"];
+    const structure = params[0]["structure"];
 
-    // . . .
+    response.statusCode = 200;
+
+    if (!get_GameStructureName().includes(structure)) {
+      response.setHeader("Content-Type", utils.getMIMETypes(".json"));
+      response.end(JSON.stringify({"transaction_succes": false}));
+      return;
+    }
+
+    if (game.player_money < structure.price) {
+      response.setHeader("Content-Type", utils.getMIMETypes(".json"));
+      response.end(JSON.stringify({"transaction_succes": false}));
+      return;
+    }
+
+    game.player_money -= structure.price;
+
+    response.setHeader("Content-Type", utils.getMIMETypes(".json"));
+    response.end(JSON.stringify({"transaction_succes": true}));
   },
-  */
 };
 
 
@@ -144,8 +172,8 @@ exports.manageRequest = async (request, response) => {
       GameTasks.continueGame(response, utils.getToken(request));
       break;
 
-    case ... :
-      GameTasks. ...(response, utils.getToken(request), parsed_request["params"]);
+    case "buyStruct" :
+      GameTasks.buyStruct(response, utils.getToken(request), parsed_request["params"]);
       break;
 
     default: GameTasks.default(response);
