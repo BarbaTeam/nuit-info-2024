@@ -4,10 +4,10 @@ const utils = require("./utils");
 
 
 GameStructure = {
-  ZODIAC: {name: "zodiac", price: 50},
-  FISHERMAN: {name: "fisherman", price: 200},
-  CARGO: {name: "cargo", price: 1000},
-  OIL_PLATFORM: {name: "oil platform", price: 10000},
+  ZODIAC: {name: "zodiac", price: 50, "money_modifier":5, "pollution_modifier":10},
+  FISHERMAN: {name: "fisherman", price: 200, "money_modifier":10, "pollution_modifier":20},
+  CARGO: {name: "cargo", price: 1000, "money_modifier":100, "pollution_modifier":200},
+  OIL_PLATFORM: {name: "oil platform", price: 10000, "money_modifier":500, "pollution_modifier": 1000},
 }
 
 function get_GameStructureName() {
@@ -24,8 +24,12 @@ class Game {
     player_money = 0;
     pollution_rate = 0;
     hp = 100;
+    effects = [];
 
-    structures = [];
+    inventory = {};
+    for (key of get_GameStructureName()) {
+      inventory[key] = 0;
+    }
   }
 
   parseToJSON() {
@@ -33,7 +37,8 @@ class Game {
       "player_money": player_money,
       "pollution_rate": pollution_rate,
       "hp": hp,
-      "structures": structures,
+      "inventory": inventory,
+      "effects": effects,
     });
   }
 }
@@ -51,7 +56,6 @@ const GAMES /*UserToken : Game*/ = {}
 
 const APITasks = {
   signin: (response, user_inputs) => {
-    response.statusCode = 200;
 
     const username = user_inputs["username"];
     const password = user_inputs["password"];
@@ -59,6 +63,7 @@ const APITasks = {
     USERS[username] = genToken(username, password);
 
     /*DEBUG ::*/ console.log("USERS :::"); console.log(USERS);
+    response.statusCode = 200;
     response.end();
   },
 
@@ -77,7 +82,6 @@ const APITasks = {
     }
 
     /*DEBUG ::*/ console.log(USERS[username])
-
     response.statusCode = 200;
     response.setHeader('Content-Type', "text/plain")
     response.end(USERS[username])
@@ -140,6 +144,8 @@ const GameTasks = {
     }
 
     game.player_money -= structure.price;
+    game.inventory[structure.name]++;
+    game.pollution_rate += structure.pollution_modifier;
 
     response.setHeader("Content-Type", utils.getMIMETypes(".json"));
     response.end(JSON.stringify({"transaction_succes": true}));
@@ -151,8 +157,6 @@ const GameTasks = {
 exports.manageRequest = async (request, response) => {
   const api_request = request.url.split("/api/").filter(Boolean)[0];
   const parsed_request = utils.parseRequest(api_request);
-
-  /*DEBUG ::*/ console.log("iiiiiiii", parsed_request);
 
   switch (parsed_request["task"]) {
     case "signin":
@@ -177,5 +181,23 @@ exports.manageRequest = async (request, response) => {
       break;
 
     default: GameTasks.default(response);
+  }
+}
+
+
+
+exports.update_all_games = () => {
+  for (game of GAMES) {
+    if (inventory[ZODIAC.name] > 0) {
+      game.player_money +=
+    }
+
+    if (inventory[CARGO.name] > 0) {
+      game.player_money +=
+    }
+
+    if (inventory[FISHERMAN.name] > 0) {
+      game.player_money +=
+    }
   }
 }
