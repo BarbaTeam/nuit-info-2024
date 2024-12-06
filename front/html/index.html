@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/reset.css">
-    <link id="favicon" rel="icon" type="image/png" href="../img/logo-pns.png">
+    <link id="favicon" rel="icon" type="image/png" href="../img/barbateam.png">
     <title>My Website</title>
 
     <!-- Utils -->
@@ -14,6 +14,15 @@
     <!--# Scripts #-->
     <script src="../js/utils/loader.js" defer></script>
     <script src="../js/utils/modal.js" defer></script>
+
+    <script>
+        window.onload = function() {
+            const token = localStorage.getItem('captchaToken');
+            if (!token) {
+                window.location.href = 'content/captcha.html';
+            }
+        }
+    </script>
 </head>
 <body>
     <header>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha</title>
+    <script>
+        let sequence = [];
+        let correctOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        function initCaptcha() {
+            // Mélange des pièces
+            let pieces = correctOrder.slice();
+            pieces.sort(() => Math.random() - 0.5);
+
+            const container = document.getElementById('captcha-grid');
+            container.innerHTML = '';
+            pieces.forEach(piece => {
+                const div = document.createElement('div');
+                div.className = 'captcha-piece';
+                div.textContent = piece;
+                div.onclick = function () {
+                    sequence.push(piece);
+                    div.style.backgroundColor = '#0f0'; // Indique que c'est cliqué
+                    checkSequence();
+                };
+                container.appendChild(div);
+            });
+        }
+
+        function checkSequence() {
+            if (sequence.length === correctOrder.length) {
+                if (JSON.stringify(sequence) === JSON.stringify(correctOrder)) {
+                    alert('CAPTCHA réussi !');
+                    localStorage.setItem('captchaToken', 'valid');
+                    window.location.href = '../index.html';
+                } else {
+                    alert('CAPTCHA échoué. Réessayez !');
+                    sequence = [];
+                    initCaptcha();
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="initCaptcha()">
+<h1>Captcha</h1>
+<p>Cliquez sur les chiffres dans l'ordre croissant pour valider votre accès.</p>
+<div id="captcha-grid" class="captcha-grid"></div>
+</body>
+</html>
