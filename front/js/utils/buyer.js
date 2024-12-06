@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const zodiakButton = document.querySelector('.money-maker-facility-add');
     const cargoButton = document.querySelector('.cargo-facility-add');
+    const pêcheButton = document.querySelector('.peche-facility-add');
     
     zodiakButton.addEventListener('click', async function() {
         try {
