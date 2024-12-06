@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <style>
-        .clickable-zone {
-            position: relative; /* Fixe la zone par rapport à la fenêtre */
-            width: 100vw;
-            height: 400px;
-            background-color: rgba(0, 0, 0, 0); /* Zone complètement transparente */
-            cursor: pointer;
-        }
-    </style>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/reset.css">
     <title>Page 1</title>
 
     <!-- Utils -->
@@ -45,6 +36,32 @@
             const localX = event.clientX - zone.left; // Position X relative à la zone
             const localY = event.clientY - zone.top;  // Position Y relative à la zone
 
+    <!--
+    <div class="right-container">
+        <div class="alert-screen">
+            <img class="img_screen" src="../../img/screen.png">
+        </div>
+
+        <table class="event-counter-container">
+            <thead>
+            <tr class="event-counter-action">
+                <th>Action</th>
+                <th>Cost</th>
+                <th>Buy</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="event-counter-action">
+                <td>Police maritime</td>
+                <td>50 G</td>
+                <td><button class="event-counter-action-add">+</button></td>
+            </tr>
+            <tr class="event-counter-action">
+                <td>Filtrer l'eau</td>
+                <td>500 G</td>
+                <td><button class="event-counter-action-add">+</button></td>
+            </tr>
+        </table>
             // Afficher la position dans une alerte
             alert(`Position de la souris (fenêtre) : X=${mouseX}, Y=${mouseY}\nPosition relative à la zone : X=${localX}, Y=${localY}`);
 
@@ -56,17 +73,18 @@
 
     <div class="playable_zone">
 
+    </div>
+-->
     <div class="left-container">
         <div class="datas">
             <div class="money">
-                <figure>
-                    <img class="img_data" src="../../img/euro.png">
-                    <figcaption>100</figcaption>
-                </figure>
+                100
+                <img class="img_data" src="../../img/euro.png">
             </div>
             <div class="pollution">0 P</div>
             <div class="human">
-                <div class="health-bar">100%</div>
+                <div class="health-bar">100% HP</div>
+                <img class="img_humain" src="../../img/human.png">
             </div>
         </div>
         <table class="money-maker-container">

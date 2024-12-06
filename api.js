@@ -1,19 +1,45 @@
-const fs = require("fs");
 const { hash } = require("crypto");
 
 const utils = require("./utils");
+
+
+class GameStructure {
+  ZODIAC = "zodiac"
+  FISHERMAN = "fisherman";
+  CARGO = "cargo";
+  OIL_PLATFORM = "oil platform";
+}
+
+
+class Game {
+  constructor() {
+    player_money = 0;
+    pollution_rate = 0;
+    hp = 0;
+
+    structures = [];
+  }
+
+  parseToJSON() {
+    return JSON.stringify({
+      "player_money": player_money,
+      "pollution_rate": pollution_rate,
+      "hp": hp,
+      "structures": structures,
+    });
+  }
+}
 
 
 function genToken(username, password) {
   return 31 * hash(`${username}`) + hash(`${password}`);
 }
 
-
 const USERS = {}
+const GAMES /*UserToken : Game*/ = {}
 
 
-
-//* API tasks namespace :
+// API tasks namespace :
 
 const APITasks = {
   signin: (response, user_inputs) => {
@@ -54,26 +80,6 @@ const APITasks = {
 
 
 
-class GameStructure {
-  ZODIAC = "zodiac"
-  FISHERMAN = "fisherman";
-  CARGO = "cargo";
-  OIL_PLATFORM = "oil platform";
-}
-
-
-
-class Game {
-  constructor() {
-    player_money = 0;
-    pollution_rate = 0;
-    hp = 0;
-
-    structures = [];
-  }
-}
-const Games /*UserToken : Game*/ = {};
-
 const GameTasks = {
   default: (response) => {
     response.statusCode = 200;
@@ -82,9 +88,9 @@ const GameTasks = {
 
   newGame: (response, user_token) => {
     // Reset Game :
-    Games[user_token] = new Game();
+    GAMES[user_token] = new Game();
 
-    const game = Games[user_token];
+    const game = GAMES[user_token];
 
     response.statusCode = 200;
     response.setHeader("Content-Type", utils.getMIMETypes(".json"));
