@@ -4,19 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Captcha</title>
-    <style>
-        .captcha-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-gap: 5px;
-        }
-        .captcha-piece {
-            width: 100px;
-            height: 100px;
-            border: 1px solid #ccc;
-            cursor: pointer;
-        }
-    </style>
+
+    <link rel="stylesheet" href="../../css/captcha.css">
+
     <script>
         let sequence = [];
         let correctOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -28,37 +18,50 @@
 
             const container = document.getElementById('captcha-grid');
             container.innerHTML = '';
+            sequence = []; // Réinitialise la séquence
             pieces.forEach(piece => {
                 const div = document.createElement('div');
                 div.className = 'captcha-piece';
                 div.textContent = piece;
                 div.onclick = function () {
-                    sequence.push(piece);
-                    div.style.backgroundColor = '#0f0'; // Indique que c'est cliqué
-                    checkSequence();
+                    handlePieceClick(piece, div);
                 };
                 container.appendChild(div);
             });
         }
 
-        function checkSequence() {
+        function handlePieceClick(piece, element) {
+            const currentIndex = sequence.length;
+
+            // Ajoute le numéro à la séquence en cours
+            sequence.push(piece);
+
+            // Vérifie si la séquence est correcte jusqu'à présent
+            if (piece !== correctOrder[currentIndex]) {
+                // Si une erreur est détectée
+                alert('Erreur détectée. Réinitialisation du CAPTCHA.');
+                initCaptcha();
+                return;
+            }
+
+            // Marque la pièce comme cliquée
+            element.style.backgroundColor = '#0f0'; // Couleur verte pour validé
+
+            // Si toute la séquence est correcte
             if (sequence.length === correctOrder.length) {
-                if (JSON.stringify(sequence) === JSON.stringify(correctOrder)) {
-                    alert('CAPTCHA réussi !');
-                    localStorage.setItem('captchaToken', 'valid');
-                    window.location.href = 'home.html';
-                } else {
-                    alert('CAPTCHA échoué. Réessayez !');
-                    sequence = [];
-                    initCaptcha();
-                }
+                alert('CAPTCHA réussi !');
+                localStorage.setItem('captchaToken', 'valid');
+                window.location.href = 'home.html';
             }
         }
     </script>
+
 </head>
 <body onload="initCaptcha()">
-<h1>Captcha</h1>
-<p>Cliquez sur les chiffres dans l'ordre croissant pour valider votre accès.</p>
-<div id="captcha-grid" class="captcha-grid"></div>
+<div id="captcha-container">
+    <h1>Captcha</h1>
+    <p>Cliquez sur les chiffres dans l'ordre croissant pour valider votre accès.</p>
+    <div id="captcha-grid" class="captcha-grid"></div>
+</div>
 </body>
 </html>

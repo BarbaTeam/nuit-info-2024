@@ -1,0 +1,105 @@
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #6cc8cd, #4e81c6);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    text-align: center;
+}
+
+#captcha-container {
+    text-align: center;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Conteneur du CAPTCHA */
+#captcha-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Style des pièces du CAPTCHA */
+.captcha-piece {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: #ffffff;
+    border: 2px solid #66a6ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Effet au survol */
+.captcha-piece:hover {
+    transform: translateY(-5px);
+    background: #89f7fe;
+    color: #fff;
+}
+
+/* Effet de clic */
+.captcha-piece:active {
+    transform: scale(0.95);
+    background: #66a6ff;
+    color: #fff;
+}
+
+/* État cliqué */
+.captcha-piece.clicked {
+    background: #a366ff !important;
+    color: #fff;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Responsivité */
+@media (max-width: 600px) {
+    #captcha-grid {
+        grid-template-columns: repeat(3, 80px);
+        grid-gap: 8px;
+    }
+
+    .captcha-piece {
+        width: 80px;
+        height: 80px;
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
