@@ -3,11 +3,11 @@ const { hash } = require("crypto");
 const utils = require("./utils");
 
 
-class GameStructure {
-  ZODIAC = "zodiac"
-  FISHERMAN = "fisherman";
-  CARGO = "cargo";
-  OIL_PLATFORM = "oil platform";
+GameStructure = {
+  ZODIAC: "zodiac",
+  FISHERMAN: "fisherman",
+  CARGO: "cargo",
+  OIL_PLATFORM: "oil platform",
 }
 
 
@@ -15,7 +15,7 @@ class Game {
   constructor() {
     player_money = 0;
     pollution_rate = 0;
-    hp = 0;
+    hp = 100;
 
     structures = [];
   }
@@ -96,7 +96,7 @@ const GameTasks = {
     response.setHeader("Content-Type", utils.getMIMETypes(".json"));
 
     // Something
-    response.end(JSON.stringify({"wordLength": game.W2G.length}));
+    response.end(game.parseToJSON());
   },
 
   continueGame: (response, user_token) => {
